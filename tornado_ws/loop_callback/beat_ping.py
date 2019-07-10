@@ -6,10 +6,10 @@ from tornado_ws import USERS, USER_INFOS
 
 
 class BeatPing(object):
-    def __init__(self, users=USERS, user_infos=USER_INFOS, ping=None, bool_gizp=True):
+    def __init__(self, users=USERS, user_infos=USER_INFOS, ping=None, bool_gzip=True):
         self.users = users
         self.user_infos = user_infos
-        self.bool_gizp = bool_gizp
+        self.bool_gizp = bool_gzip
         if not ping:
             self.ping = round(time.time() * 1000)
         else:
