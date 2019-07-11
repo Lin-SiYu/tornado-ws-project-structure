@@ -1,4 +1,6 @@
 import importlib
+import logging
+
 from tornado.websocket import WebSocketHandler
 
 from tornado_ws import USERS as users
@@ -6,6 +8,9 @@ from tornado_ws.config import setting
 
 
 class WSMiddleware:
+    def __init__(self):
+        self.logger = logging.getLogger(self.__class__.__name__)
+
     def process_open(self, ws):
         pass
 
@@ -18,7 +23,8 @@ class WSMiddleware:
 
 class WSMiddle(WebSocketHandler):
     def open(self):
-        print("WSMiddle opened")
+        # print("WSMiddle opened")
+        logging.info('WSMiddle opened with %s' % self)
         users.add(self)
         try:
             self.middleware_list
@@ -27,7 +33,7 @@ class WSMiddle(WebSocketHandler):
         self._middle_list_handle('process_open')
 
     def on_message(self, message):
-        print("WSMiddle on_message")
+        # print("WSMiddle on_message")
         self.message = message
         self._middle_list_handle('process_message')
         self.msg_handle(message)
@@ -36,7 +42,8 @@ class WSMiddle(WebSocketHandler):
         pass
 
     def on_close(self):
-        print("WSMiddle closed")
+        # print("WSMiddle closed")
+        logging.info('WSMiddle closed with %s' % self)
         self._middle_list_handle('process_close')
         users.discard(self)
 

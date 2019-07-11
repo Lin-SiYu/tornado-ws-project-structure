@@ -1,5 +1,6 @@
 import gzip
 import json
+import logging
 import time
 
 from tornado_ws import USERS, USER_INFOS
@@ -14,6 +15,7 @@ class BeatPing(object):
             self.ping = round(time.time() * 1000)
         else:
             self.ping = ping
+        self.logger = logging.getLogger(self.__class__.__name__)
 
     def beat_ping(self):
         '''
@@ -22,7 +24,7 @@ class BeatPing(object):
         - 推送数据手动 gzip 压缩
         :return: None
         '''
-        print('beatping')
+        logging.info('beat-ping is running')
         data_dic = {'ping': self.ping}
         if self.bool_gizp:
             data = self.get_gzip(data_dic)
@@ -31,7 +33,6 @@ class BeatPing(object):
         for user in self.users:
             user.write_message(data, binary=self.bool_gizp)
             self.user_infos[user]['ping'] = data_dic['ping']
-            # print(self.user_infos)
             if self.user_infos[user]['count'] == 2:
                 user.close()
                 self.user_infos.pop(user)
