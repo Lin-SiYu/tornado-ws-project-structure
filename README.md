@@ -2,6 +2,8 @@
 
 A tornado project that contains components
 
+[TOC]
+
 # 一、Middleware 组件
 
 [详细信息请参考博客](https://blog.csdn.net/qq_33961117/article/details/95335533)
@@ -39,6 +41,7 @@ MIDDLEWARE_LIST = ['tornado_ws.common_utilities.middleware.pingmiddle.PingMiddle
 ```python
 logging.info('messages')
 ```
+
 # 三、Mongodb 组件
 
 添加了 mongodb 的连接处理类，目前对基类只添加了连接和oplog对象获取
@@ -53,7 +56,3 @@ logging.info('messages')
 
 目前只添加了mq的初始化连接 
 详细查看：common_utilities\mq\mq_extensions.py
-
-
-
-
