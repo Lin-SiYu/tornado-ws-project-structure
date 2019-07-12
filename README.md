@@ -39,4 +39,12 @@ MIDDLEWARE_LIST = ['tornado_ws.common_utilities.middleware.pingmiddle.PingMiddle
 ```python
 logging.info('messages')
 ```
+# 三、Mongodb 组件
 
+添加了 mongodb 的连接处理类，目前对基类只添加了连接和oplog对象获取
+
+处理类位置 ：\common_utilities\mongo\mongo_base.py - MongoHandler
+
+## 3-1 mongo-oplog 监听并通过 ws 对连接用户的广播
+
+详情分析见博客： [MongoDB - mongo 的数据监听](https://blog.csdn.net/qq_33961117/article/details/94579942)
