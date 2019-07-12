@@ -48,3 +48,12 @@ logging.info('messages')
 ## 3-1 mongo-oplog 监听并通过 ws 对连接用户的广播
 
 详情分析见博客： [MongoDB - mongo 的数据监听](https://blog.csdn.net/qq_33961117/article/details/94579942)
+
+# 四、RabbitMQ 组件
+
+目前只添加了mq的初始化连接 
+详细查看：common_utilities\mq\mq_extensions.py
+
+
+
+
