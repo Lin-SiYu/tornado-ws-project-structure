@@ -2,8 +2,6 @@
 
 A tornado project that contains components
 
-[TOC]
-
 # 一、Middleware 组件
 
 [详细信息请参考博客](https://blog.csdn.net/qq_33961117/article/details/95335533)
