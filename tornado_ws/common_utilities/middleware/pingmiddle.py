@@ -22,7 +22,7 @@ class PingMiddleware(WSMiddleware):
 
     def process_message(self, ws):
         # print('PingMiddleware - message')
-        logging.info('Ping Middleware handle message')
+        self.logger.info('Ping Middleware handle message')
         msg = json.loads(ws.message)
         user_dic = user_infos.get(self)
         # print(user_dic)

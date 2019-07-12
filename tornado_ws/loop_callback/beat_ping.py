@@ -24,7 +24,7 @@ class BeatPing(object):
         - 推送数据手动 gzip 压缩
         :return: None
         '''
-        logging.info('beat-ping is running')
+        self.logger.info('beat-ping is running')
         data_dic = {'ping': self.ping}
         if self.bool_gizp:
             data = self.get_gzip(data_dic)
