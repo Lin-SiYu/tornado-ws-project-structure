@@ -13,10 +13,10 @@ from tornado_ws.urls import url_patterns
 class CreatApp(tornado.web.Application):
     def __init__(self):
         tornado.web.Application.__init__(self, url_patterns, **setting.__dict__)
-        self.conigeure_mq()
+        self.configure_mq()
         # self.configure_ioloop()
 
-    def conigeure_mq(self):
+    def configure_mq(self):
         MqName('fanout').bind()
 
     def configure_ioloop(self):
@@ -30,4 +30,8 @@ def main():
     app = CreatApp()
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)
-    tornado.ioloop.IOLoop.instance().start()
+    loop = tornado.ioloop.IOLoop.instance()
+    try:
+        loop.start()
+    except KeyboardInterrupt:
+        loop.stop()
