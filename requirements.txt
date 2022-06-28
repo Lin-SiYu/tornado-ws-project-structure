@@ -1,4 +1,4 @@
-arrow==0.14.2
+arrow==0.15.1
 cffi==1.12.3
 gevent==1.4.0
 greenlet==0.4.15
